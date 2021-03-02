@@ -39,7 +39,7 @@ try:
 except ImportError:
     from yaml import SafeLoader, SafeDumper
 
-import simplejson as json
+import json
 from M2Crypto import X509, EVP, BIO
 
 from keylime import cmd_exec

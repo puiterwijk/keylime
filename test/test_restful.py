@@ -41,7 +41,7 @@ import errno
 from pathlib import Path
 
 import dbus
-import simplejson as json
+import json
 
 from keylime import config
 from keylime import tornado_requests

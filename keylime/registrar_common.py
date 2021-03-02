@@ -16,7 +16,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from cryptography.hazmat.backends import default_backend
 from cryptography.x509 import load_der_x509_certificate
-import simplejson as json
+import json
 
 from keylime.db.registrar_db import RegistrarMain
 from keylime.db.keylime_db import DBEngineManager, SessionManager

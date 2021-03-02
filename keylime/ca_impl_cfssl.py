@@ -12,7 +12,7 @@ import shutil
 import sys
 
 import requests
-import simplejson as json
+import json
 from M2Crypto import EVP, X509
 
 from keylime import config

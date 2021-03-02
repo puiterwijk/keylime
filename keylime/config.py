@@ -19,7 +19,7 @@ try:
 except ImportError:
     from yaml import SafeLoader
 
-import simplejson as json
+import json
 
 
 def convert(data):

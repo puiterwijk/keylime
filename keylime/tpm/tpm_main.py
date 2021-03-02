@@ -17,7 +17,7 @@ from distutils.version import StrictVersion
 
 import M2Crypto
 from cryptography.hazmat.primitives import serialization as crypto_serialization
-import simplejson as json
+import json
 
 from keylime import cmd_exec
 from keylime import config

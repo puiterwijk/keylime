@@ -17,7 +17,7 @@ import time
 import zipfile
 
 from cryptography.hazmat.primitives import serialization as crypto_serialization
-import simplejson as json
+import json
 
 from keylime.requests_client import RequestsClient
 from keylime.common import states
