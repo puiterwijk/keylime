@@ -12,7 +12,6 @@ LABEL version="1.0.1" description="Keylime - Bootstrapping and Maintaining Trust
 # environment variables
 ARG BRANCH=master
 ENV container docker
-ENV HOME /root
 ENV KEYLIME_HOME ${HOME}/keylime
 ENV TPM_HOME ${HOME}/swtpm2
 COPY dbus-policy.conf /etc/dbus-1/system.d/
@@ -62,6 +61,22 @@ wget \
 which"
 
 RUN dnf makecache && \
-  dnf -y install $PKGS_DEPS && \
-  dnf clean all && \
+  dnf -y install $PKGS_DEPS
+
+# Devcontainer stuff from here on
+RUN dnf install -y glibc-langpack-en glibc-locale-source && \
+    localedef -i en_US -f UTF-8 en_US.UTF-8
+
+COPY devcontainer-scripts/*.sh /tmp/library-scripts/
+
+ARG INSTALL_ZSH="true"
+ARG UPGRADE_PACKAGES="false"
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN bash /tmp/library-scripts/common-redhat.sh "$INSTALL_ZSH" "$USERNAME" "$USER_UID" "$USER_GID" "$UPGRADE_PACKAGES" "$true"
+
+# Clear DNF cache
+RUN dnf clean all && \
   rm -rf /var/cache/dnf/*
